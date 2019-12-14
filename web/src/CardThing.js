@@ -20,7 +20,7 @@ class CardThing extends React.Component {
                         </Typography>
 
                        
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography gutterBottom variant="h3" component="h2">
                             {this.props.value}
                         </Typography>
 
