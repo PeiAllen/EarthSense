@@ -1,21 +1,48 @@
 import React from 'react';
 
-import { Grid, Card, CardActionArea, CardContent, Typography, CardActions, Button, AppBar, Toolbar, IconButton} from '@material-ui/core';
+import {  MenuList, Drawer, MenuItem, Grid, Card, CardActionArea, CardContent, Typography, CardActions, Button, AppBar, Toolbar, IconButton} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import './App.css';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import CardThing from './CardThing.js';
+
+
 class App extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            open: false,
+            render: 'dataview'
+        }
+    }
+
+    toggleDrawer = () => {
+        this.setState({open: !this.state.open});
+    }
+
+    setRender = (view) => {
+        console.log("HI");
+        console.log(view);
+        // this.setState({
+        //     render: view
+        // })
     }
 
     render() {
         return (
-            
             <div className="App">
+
+                {/* <ClickAwayListener onClickAway={this.toggleDrawer}> */}
+                <Drawer open={this.state.open} width={200} ModalProps={{ onBackdropClick: this.toggleDrawer}}>
+                    <MenuItem> Data view </MenuItem>
+                    <MenuItem> Graph view </MenuItem>
+                    <MenuItem> Simulation </MenuItem>
+
+                </Drawer>
+
                 <AppBar position="static">
                     <Toolbar>
-                        <IconButton edge="start" color="inherit" aria-label="menu">
+                        <IconButton edge="start" color="inherit" aria-label="menu" onClick={this.toggleDrawer}>
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h5">
@@ -23,6 +50,8 @@ class App extends React.Component {
                         </Typography>
                     </Toolbar>
                 </AppBar>
+                
+
                 <div id = "content">
                     <div id = "stream"> 
                     <Grid container spacing={1}>
