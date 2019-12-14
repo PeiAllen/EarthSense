@@ -35,6 +35,10 @@ class SimulationView extends React.Component {
         <div style={{ height: '100vh', width: '100%' }}>
           <GoogleMapReact  
             ref={el => this.MapRef = el}  
+            bootstrapURLKeys={{
+                key: 'AIzaSyAkQpJRUfUs2qOU_9PZUfeosSpP_M_8Jts', 
+                language: 'en'
+            }}
             defaultCenter={this.props.center}
             defaultZoom={this.props.zoom}
             heatmapLibrary={true}     
