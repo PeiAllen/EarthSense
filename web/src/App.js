@@ -1,47 +1,58 @@
 import React from 'react';
 
-import { Grid, Card, CardActionArea, CardContent, Typography, CardActions, Button, AppBar, Toolbar, IconButton} from '@material-ui/core';
+import {  MenuList, Drawer, MenuItem, Grid, Card, CardActionArea, CardContent, Typography, CardActions, Button, AppBar, Toolbar, IconButton} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import './App.css';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import CardThing from './CardThing.js';
+import DataView from './DataView.js';
+import GraphView from './GraphView.js';
+import SimulationView from './SimulationView.js';
+
 class App extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            open: false,
+            render: 'Data View'
+        }
+    }
+
+    toggleDrawer = () => {
+        this.setState({open: !this.state.open});
+    }
+
+    setRender = (view) => {
+        console.log("switching to "+view);
+        this.setState({
+            render: view
+        })
+        this.toggleDrawer();
     }
 
     render() {
         return (
-            
             <div className="App">
+                <Drawer open={this.state.open} width={200} ModalProps={{ onBackdropClick: this.toggleDrawer}}>
+                    <MenuList>
+                        <MenuItem onClick={() => this.setRender('Data View')}> Data view </MenuItem>
+                        <MenuItem onClick={() => this.setRender('Graph View')}> Graph view </MenuItem>
+                        <MenuItem onClick={() => this.setRender('Simulation View')}> Simulation </MenuItem>
+                    </MenuList>
+                </Drawer>
+
                 <AppBar position="static">
                     <Toolbar>
-                        <IconButton edge="start" color="inherit" aria-label="menu">
+                        <IconButton edge="start" color="inherit" aria-label="menu" onClick={this.toggleDrawer}>
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h5">
-                            Data view
+                            {this.state.render}
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                <div id = "content">
-                    <div id = "stream"> 
-                    <Grid container spacing={1}>
-                        <Grid container item xs={12} spacing={3}>
-                            <Grid item xs={6}>
-                                <CardThing header = "hi" value = "123ppm" text = "info here"></CardThing>
-                                <CardThing header = "hi" value = "123ppm" text = "info here"></CardThing>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <CardThing header = "hi" value = "123ppm" text = "info here"></CardThing>
-                                <CardThing header = "hi" value = "123ppm" text = "info here"></CardThing>
-                            </Grid>
-                            
-                        </Grid>
-                    </Grid>
-
-
-                    </div>
-                </div>
+                {this.state.render==='Data View'?<DataView> </DataView>:(this.state.render==='Graph View'?<GraphView> </GraphView>:<SimulationView> </SimulationView>)}
+               
         
             </div>
           );
