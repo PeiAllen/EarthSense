@@ -9,7 +9,9 @@ import DataView from './DataView.js';
 import GraphView from './GraphView.js';
 import SimulationView from './SimulationView.js';
 import MapView from './Map.js';
-
+const images={
+    logo:require('./logo.png'),
+}
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -36,7 +38,7 @@ class App extends React.Component {
             <div className="App">
                 <Drawer open={this.state.open} width={200} ModalProps={{ onBackdropClick: this.toggleDrawer}}>
                     <MenuList>
-                        <MenuItem onClick={() => this.setRender('Data View')}> Data view </MenuItem>
+                        <MenuItem onClick={() => this.setRender('Data View')}> Data </MenuItem>
                         <MenuItem onClick={() => this.setRender('Simulation View')}> Simulation </MenuItem>
                         <MenuItem onClick={() => this.setRender('Map View')}> Map </MenuItem>
                     </MenuList>
@@ -50,6 +52,7 @@ class App extends React.Component {
                         <Typography variant="h5">
                             {this.state.render}
                         </Typography>
+                        <img style={{alignSelf:'center'}} source={images.logo}></img>
                     </Toolbar>
                 </AppBar>
                 {this.state.render==='Data View'?<DataView> </DataView>:(this.state.render==='Simulation View'?<SimulationView> </SimulationView>:<MapView> </MapView>)}
