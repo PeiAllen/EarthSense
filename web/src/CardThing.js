@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card, CardActionArea, CardContent, Typography, CardActions, Button } from '@material-ui/core';
+import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Card, CardActionArea, CardContent, Typography, CardActions, Button } from '@material-ui/core';
 
 import './CardThing.css';
 class CardThing extends React.Component {
@@ -33,11 +33,18 @@ class CardThing extends React.Component {
                         
                         </CardContent>
                     </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Learn more
-                        </Button>
-                    </CardActions>
+                    <ExpansionPanel square>
+        <ExpansionPanelSummary aria-controls="panel1d-content" id="panel1d-header">
+          <Typography>Learn More</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
                 </Card>
             </div>
         )

@@ -16,7 +16,7 @@ class DataView extends React.Component {
             <div id = "content">
                 <div id = "stream"> 
                     <Grid container spacing={1}>
-                        <Grid container item xs={12} spacing={3}>
+                        <Grid container item xs={12} spacing={6}>
                             <Grid item xs={6}>
                                 <CardThing header = "hi" value = "123ppm" text = "info here"></CardThing>
                                 <CardThing header = "hi" value = "123ppm" text = "info here"></CardThing>
