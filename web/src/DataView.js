@@ -82,6 +82,12 @@ class DataView extends React.Component {
                     currentPPM: currentPPMcute,
                 }
             })
+
+            if(currentPPMcute > 5000) {
+                fetch('http://172.17.51.128:5000/text/' + 'WARNING: An abnormally high amount of harmful gases were detected in your area. Be careful! :)').then((response) => {
+                    console.log(response);
+                })
+            }
         })
 
         var humidityRef = database.ref('/Humidity');
@@ -238,7 +244,7 @@ class DataView extends React.Component {
                 this.setState({
                     noiseVals: {
                         x: xValsN,
-                    y: yValsN,
+                        y: yValsN,
                         currentNoise: "Severe"
                     }
                 })
