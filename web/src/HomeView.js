@@ -7,7 +7,7 @@ class HomeView extends React.Component {
     render() {
         return (
             <div>
-            <img style={{width:'80%',paddingBottom:'20vh',paddingTop:'30vh',marginLeft:'auto',marginRight:'auto',display:'block'}} src={images.logo}/>
+            <img style={{width:'80%',paddingBottom:'30vh',paddingTop:'30vh',marginLeft:'auto',marginRight:'auto',display:'block'}} src={images.logo}/>
             <Typography variant="h1" style={{textAlign:'center'}}>About Us</Typography>
             <Typography variant="h5" style={{textAlign:'center'}}>WRITESTUFFHERE</Typography>
             </div>
