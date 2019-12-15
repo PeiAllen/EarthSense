@@ -84,6 +84,7 @@ class DataView extends React.Component {
             })
 
             if(currentPPMcute > 5000) {
+                console.log("texting for gas");
                 fetch('http://172.17.51.128:5000/text/' + 'WARNING: An abnormally high amount of harmful gases were detected in your area. Be careful! :)').then((response) => {
                     console.log(response);
                 })
@@ -129,6 +130,13 @@ class DataView extends React.Component {
                     currentHumidity: currentHumiditycute
                 }
             })
+
+            if(currentHumiditycute < 25) {
+                console.log("texting");
+                fetch('http://172.17.51.128:5000/text/' + 'WARNING: An abnormally low amount of humidity was detected. This could be indicative of a forest fire or a drought, among other things.').then((response) => {
+                    console.log(response);
+                })
+            }
 
 
         })
