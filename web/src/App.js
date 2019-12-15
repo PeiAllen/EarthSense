@@ -8,11 +8,11 @@ import CardThing from './CardThing.js';
 import DataView from './DataView.js';
 import GraphView from './GraphView.js';
 import HomeView from './HomeView.js';
+import MapView from './MapView.js';
 import SimulationView from './SimulationView.js';
 import * as firebase from "firebase/app";
 
 import "firebase/firestore";
-import MapView from './Map.js';
 class App extends React.Component {
     constructor(props) {
         super(props);
