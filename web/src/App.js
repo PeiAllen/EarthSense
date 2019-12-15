@@ -1,26 +1,24 @@
 import React from 'react';
 
-import {  MenuList, Drawer, MenuItem, Grid, Card, CardActionArea, CardContent, Typography, CardActions, Button, AppBar, Toolbar, IconButton} from '@material-ui/core';
+import {MenuList, Drawer, MenuItem, Grid, Card, CardActionArea, CardContent, Typography, CardActions, Button, AppBar, Toolbar, IconButton} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import './App.css';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import CardThing from './CardThing.js';
 import DataView from './DataView.js';
 import GraphView from './GraphView.js';
+import HomeView from './HomeView.js';
+import MapView from './MapView.js';
 import SimulationView from './SimulationView.js';
 import * as firebase from "firebase/app";
 
 import "firebase/firestore";
-import MapView from './Map.js';
-const images={
-    logo:require('./logo.png'),
-}
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             open: false,
-            render: 'Data View'
+            render: 'Home View'
         }
 
         firebase.initializeApp ({
@@ -54,6 +52,7 @@ class App extends React.Component {
             <div className="App">
                 <Drawer open={this.state.open} width={200} ModalProps={{ onBackdropClick: this.toggleDrawer}}>
                     <MenuList>
+                        <MenuItem onClick={() => this.setRender('Home View')}> Home </MenuItem>
                         <MenuItem onClick={() => this.setRender('Data View')}> Data </MenuItem>
                         <MenuItem onClick={() => this.setRender('Simulation View')}> Simulation </MenuItem>
                         <MenuItem onClick={() => this.setRender('Map View')}> Map </MenuItem>
@@ -68,10 +67,9 @@ class App extends React.Component {
                         <Typography variant="h5">
                             {this.state.render}
                         </Typography>
-                        <img style={{alignSelf:'center'}} source={images.logo}></img>
                     </Toolbar>
                 </AppBar>
-                {this.state.render==='Data View'?<DataView> </DataView>:(this.state.render==='Simulation View'?<SimulationView> </SimulationView>:<MapView> </MapView>)}
+                {this.state.render==='Data View'?<DataView> </DataView>:(this.state.render==='Simulation View'?<SimulationView> </SimulationView>:(this.state.render==='Home View'?<HomeView></HomeView>:<MapView> </MapView>))}
                
         
             </div>
