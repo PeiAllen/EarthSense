@@ -36,7 +36,6 @@ class App extends React.Component {
                 <Drawer open={this.state.open} width={200} ModalProps={{ onBackdropClick: this.toggleDrawer}}>
                     <MenuList>
                         <MenuItem onClick={() => this.setRender('Data View')}> Data view </MenuItem>
-                        <MenuItem onClick={() => this.setRender('Graph View')}> Graph view </MenuItem>
                         <MenuItem onClick={() => this.setRender('Simulation View')}> Simulation </MenuItem>
                     </MenuList>
                 </Drawer>
