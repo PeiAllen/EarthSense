@@ -9,6 +9,8 @@ class CardThing extends React.Component {
     }
 
     render() {
+
+
         return (
             <div id = "cardWrapper">
                 <Card>
@@ -34,9 +36,6 @@ class CardThing extends React.Component {
                         </CardContent>
                     </CardActionArea>
                     <ExpansionPanel square>
-        <ExpansionPanelSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Learn More</Typography>
-        </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,

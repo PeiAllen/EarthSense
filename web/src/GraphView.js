@@ -36,12 +36,20 @@ class GraphView extends React.Component {
         data={[
           {
               // replace with real data from firebase
-            x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+            x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, null],
             y: [2, 6, 3, 4, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3],
             type: 'scatter',
             mode: 'lines',
             marker: {color: 'blue'},
           },
+          {
+            // replace with real data from firebase
+          x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, null],
+          y: [2, 6, 2, 4, 6, 13, 10, 7, 1, 10, 13, 12, 1, 14, 1, 3],
+          type: 'scatter',
+          mode: 'lines',
+          marker: {color: 'red'},
+        },
         ]}
         layout={ {width: this.state.width, height: this.state.height*0.9, title: 'Graph View'} }
      />
