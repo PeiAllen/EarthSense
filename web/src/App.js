@@ -8,6 +8,9 @@ import CardThing from './CardThing.js';
 import DataView from './DataView.js';
 import GraphView from './GraphView.js';
 import SimulationView from './SimulationView.js';
+import * as firebase from "firebase/app";
+
+import "firebase/firestore";
 import MapView from './Map.js';
 const images={
     logo:require('./logo.png'),
@@ -19,6 +22,19 @@ class App extends React.Component {
             open: false,
             render: 'Data View'
         }
+
+        firebase.initializeApp ({
+            apiKey: "AIzaSyArt6XkQYnJBrCyxyAbrnKC-Ry3VzGlinc",
+            authDomain: "air-quality-database.firebaseapp.com",
+            databaseURL: "https://air-quality-database.firebaseio.com",
+            projectId: "air-quality-database",
+            storageBucket: "air-quality-database.appspot.com",
+            messagingSenderId: "840873520488",
+            appId: "1:840873520488:web:a1e6ee18027ec613c17add",
+            measurementId: "G-G281J6PEWN"
+          });
+        
+        
     }
 
     toggleDrawer = () => {

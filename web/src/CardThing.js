@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Card, CardActionArea, CardContent, Typography, CardActions, Button } from '@material-ui/core';
+import * as firebase from 'firebase';
 
 import './CardThing.css';
 class CardThing extends React.Component {
@@ -35,15 +36,13 @@ class CardThing extends React.Component {
                         
                         </CardContent>
                     </CardActionArea>
-                    <ExpansionPanel square>
+                    {/* <ExpansionPanel square>
         <ExpansionPanelDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+              {this.props.description}
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
+      </ExpansionPanel> */}
                 </Card>
             </div>
         )

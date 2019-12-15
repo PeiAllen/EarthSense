@@ -3,19 +3,25 @@ import { ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Card, Car
 
 import Plot from 'react-plotly.js';
 import './PlotThing.css'
+import * as firebase from "firebase/app";
+
 
 class PlotThing extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { width: 0, height: 0 };
+        this.state = {
+            width: 0, 
+            height: 0 
+        };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }   
 
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
-    }
 
+
+    }
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
