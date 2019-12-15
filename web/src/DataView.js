@@ -8,6 +8,12 @@ import './DataView.css';
 import Plot from 'react-plotly.js';
 import PlotThing from './PlotThing.js';
 import * as firebase from "firebase/app";
+import { withSnackbar } from 'notistack';
+var variant = 'warning';
+var snackConfig = {
+    variant: 'warning',
+    autoHideDuration: 2000,
+}
 
 
 class DataView extends React.Component {
@@ -84,6 +90,7 @@ class DataView extends React.Component {
             })
 
             if(currentPPMcute > 5000) {
+                this.props.enqueueSnackbar('Abormally high amount of harmful gases.', snackConfig);
                 console.log("texting for gas");
                 fetch('http://172.17.51.128:5000/text/' + 'WARNING: An abnormally high amount of harmful gases were detected in your area. Be careful! :)').then((response) => {
                     console.log(response);
@@ -133,6 +140,7 @@ class DataView extends React.Component {
 
             if(currentHumiditycute < 25) {
                 console.log("texting");
+                this.props.enqueueSnackbar('Abormally low amount of humidity. This could be indicative of a drought or a forest fire, amongst other things.', snackConfig);
                 fetch('http://172.17.51.128:5000/text/' + 'WARNING: An abnormally low amount of humidity was detected. This could be indicative of a forest fire or a drought, among other things.').then((response) => {
                     console.log(response);
                 })
@@ -259,6 +267,10 @@ class DataView extends React.Component {
                     }
                 })
                 
+                var variant2 = 'warning';
+                console.log('alerting for noise');
+                console.log("variant2 is "+variant2);
+                this.props.enqueueSnackbar('Large amount of noise pollution detected', snackConfig);
                 fetch('http://172.17.51.128:5000/text/' + 'WARNING: Large amounts of noise pollution detected near you. Be careful! :)').then((response) => {
                     console.log(response);
                 })
@@ -290,10 +302,14 @@ class DataView extends React.Component {
                             
                         </Grid>
                     </Grid>
+
+                   
+
                 </div>
             </div>
         )
     }
 }
 
-export default DataView;
+export default withSnackbar(DataView);
+//export default DataView;

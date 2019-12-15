@@ -11,6 +11,7 @@ import HomeView from './HomeView.js';
 import MapView from './MapView.js';
 import SimulationView from './SimulationView.js';
 import * as firebase from "firebase/app";
+import { SnackbarProvider } from 'notistack';
 
 import "firebase/firestore";
 class App extends React.Component {
@@ -69,7 +70,7 @@ class App extends React.Component {
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                {this.state.render==='Data View'?<DataView> </DataView>:(this.state.render==='Simulation View'?<SimulationView> </SimulationView>:(this.state.render==='Home View'?<HomeView></HomeView>:<MapView> </MapView>))}
+                {this.state.render==='Data View'?<SnackbarProvider maxSnack={3}><DataView> </DataView></SnackbarProvider>:(this.state.render==='Simulation View'?<SimulationView> </SimulationView>:(this.state.render==='Home View'?<HomeView></HomeView>:<MapView> </MapView>))}
                
         
             </div>
