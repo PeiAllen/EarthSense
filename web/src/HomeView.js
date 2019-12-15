@@ -8,8 +8,8 @@ class HomeView extends React.Component {
         return (
             <div>
             <img style={{width:'80%',paddingBottom:'30vh',paddingTop:'30vh',marginLeft:'auto',marginRight:'auto',display:'block'}} src={images.logo}/>
-            <Typography variant="h1" style={{textAlign:'center'}}>About Us</Typography>
-            <Typography variant="h5" style={{textAlign:'center'}}>WRITESTUFFHERE</Typography>
+            <Typography variant="h2" style={{textAlign:'center'}}>What is EarthSense?</Typography>
+            <Typography variant="h6" style={{whiteSpace: 'pre-line', textAlign:'center'}}>EarthSense makes use of dynamic graphs, heat maps, and SMS to alert people of the conditions in the area</Typography>
             </div>
         );
     }
