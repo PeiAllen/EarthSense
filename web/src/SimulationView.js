@@ -2,7 +2,7 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
-var points=[{x:43.2557,y:-79.8711,w:20}]
+var points=[{x:43.2557,y:-79.8711,w:1},{x:43.4041,y:-80.1454,w:0.8},{x:43.2187,y:-79.67094,w:0.4},{x:43.2262, y:-79.9888,w:0.9},{x:43.2157, y:-79.9655,w:0.6},{x:43.1982, y:-79.9785,w:0.95},{x:43.2012,y:-80.0094,w:0.78},{x:43.1826, y:-80.0005,w:0.43},{x:43.1636, y:-79.9731,w:0.99},{x:43.1706, y:-79.9841,w:0.72}]
 const heatMapData={positions: [
   ],
   options: {   
@@ -28,7 +28,8 @@ class SimulationView extends React.Component {
       for(var point of points)this.MapRef.heatmap.data.push({location: new google.maps.LatLng(point.x, point.y), weight: point.w});
     }
     MapClick({lat,lng}) {
-      this.MapRef.heatmap.data.push({location: new google.maps.LatLng(lat, lng), weight: 1});
+      points.push({x:lat,y:lng,w:0.5});
+      this.MapRef.heatmap.data.push({location: new google.maps.LatLng(lat, lng), weight: 0.5});
     }
     render() {
       return (
