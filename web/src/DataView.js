@@ -129,6 +129,8 @@ class DataView extends React.Component {
                     currentHumidity: currentHumiditycute
                 }
             })
+
+
         })
 
         var temperatureRef = database.ref('/Temperature');
@@ -247,6 +249,10 @@ class DataView extends React.Component {
                         y: yValsN,
                         currentNoise: "Severe"
                     }
+                })
+                
+                fetch('http://172.17.51.128:5000/text/' + 'WARNING: Large amounts of noise pollution detected near you. Be careful! :)').then((response) => {
+                    console.log(response);
                 })
             }
         })
