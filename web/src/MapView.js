@@ -95,7 +95,7 @@ const MapComponent = compose(
   </GoogleMap>
 )
 
-class Map extends React.Component {
+class MapView extends React.Component {
       render() {
         return (
           <MapComponent/>
@@ -103,4 +103,4 @@ class Map extends React.Component {
       }
 }
 
-export default Map;
+export default MapView;
