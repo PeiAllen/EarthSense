@@ -8,6 +8,7 @@ import CardThing from './CardThing.js';
 import DataView from './DataView.js';
 import GraphView from './GraphView.js';
 import SimulationView from './SimulationView.js';
+import MapView from './Map.js';
 
 class App extends React.Component {
     constructor(props) {
@@ -37,6 +38,7 @@ class App extends React.Component {
                     <MenuList>
                         <MenuItem onClick={() => this.setRender('Data View')}> Data view </MenuItem>
                         <MenuItem onClick={() => this.setRender('Simulation View')}> Simulation </MenuItem>
+                        <MenuItem onClick={() => this.setRender('Map View')}> Map </MenuItem>
                     </MenuList>
                 </Drawer>
 
@@ -50,7 +52,7 @@ class App extends React.Component {
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                {this.state.render==='Data View'?<DataView> </DataView>:(this.state.render==='Graph View'?<GraphView> </GraphView>:<SimulationView> </SimulationView>)}
+                {this.state.render==='Data View'?<DataView> </DataView>:(this.state.render==='Simulation View'?<SimulationView> </SimulationView>:<MapView> </MapView>)}
                
         
             </div>

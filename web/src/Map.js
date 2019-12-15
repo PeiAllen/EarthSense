@@ -10,7 +10,7 @@ const MapComponent = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization,geometry,drawing,places&key=AIzaSyAkQpJRUfUs2qOU_9PZUfeosSpP_M_8Jts",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `100vh` }} />,
+    containerElement: <div style={{ height: `92vh` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
   withScriptjs,
@@ -18,11 +18,21 @@ const MapComponent = compose(
   lifecycle({
     componentDidMount(){
         const toloc={};
-        var positions=[];
+        var positions=points.map(item => { return {location: new google.maps.LatLng(item.x, item.y), weight: item.w}});
         this.setState({
-            positions:points.map(item => { return {location: new google.maps.LatLng(item.x, item.y), weight: item.w}}),
+            positions:positions,
             onSearchBoxMount: ref=>{
                 toloc.SearchBox=ref;
+            },
+            onClick: (event) => {
+                var newpositions=positions;
+                newpositions.push({location: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()), weight: 0.5});
+                this.setState({
+                    positions:[],
+                })
+                this.setState({
+                    positions:newpositions,
+                })
             },
             onChange: ()=>{
                 const DirectionsService = new google.maps.DirectionsService();
@@ -49,6 +59,7 @@ const MapComponent = compose(
   })
 )((props)=>
   <GoogleMap
+    onClick={(e)=>props.onClick(e)}
     defaultZoom={11}
     defaultCenter={{ lat: 43.2557,lng: -79.8711 }}
   >
@@ -56,7 +67,7 @@ const MapComponent = compose(
       <HeatmapLayer
       options={{radius: 60,opacity:0.6}}
       data={props.positions}
-          />
+      />
       {props.directions&&props.directions.routes.map((cur, i) => <DirectionsRenderer directions={props.directions} defaultRouteIndex={i}/>)}
       <SearchBox
       ref={props.onSearchBoxMount}
