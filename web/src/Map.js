@@ -43,9 +43,9 @@ const MapComponent = compose(
                     provideRouteAlternatives: true,
                 }, (result, status) => {
                     if (status === google.maps.DirectionsStatus.OK) {
-                    this.setState({
-                        directions: result,
-                    });
+                        this.setState({
+                            directions: result,
+                        });
                     } else {
                         this.setState({
                             directions: undefined,
